@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Textarea</title>
+        <meta charset="utf-8">
+    </head>
+    <body>
+        <textarea id="textarea">小老弟是个大帅比</textarea>
+        <button onclick="changeText()">点一下就变丑</button>
+    </body>
+    <script>
+        function changeText() {
+            var $textarea = document.querySelector("#textarea");
+
+            console.log($textarea);
+            $textarea.value = "真变丑了啊";
+            $textarea.text = "其实丁丁也变小了";
+            console.log($textarea.value);
+        }
+    </script>
+</html>

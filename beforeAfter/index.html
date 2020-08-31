@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+    <header>
+        <title>BeforeAfter</title>
+        <style>
+            * {
+                box-sizing: border-box;
+            }
+            
+            li {
+                list-style: none;
+            }
+            
+            .textRight {
+                text-align: right;
+            }
+            
+            .triangle {
+                width: 300px;
+            }
+            
+            .triangle li {
+                padding: 10px;
+                margin-bottom: 10px;
+            }
+            
+            .triangle li span {
+                position: relative;
+                border-radius: 7px;
+                background-color: #9EEA6A;
+                padding: 6px 10px 8px 10px;
+                z-index: 1;
+            }
+            
+            .triangle li span:before, 
+            .triangle li span:after {
+                content: '';
+                display: block;
+                width: 0;
+                height: 0;
+                border: 8px solid transparent;
+                position: absolute;
+                top: 10px;
+            }
+            
+            .triangle li.textLeft span:before {
+                border-right: 8px solid #9EEA6A;
+                left: -16px;
+            }
+            
+            .triangle li.textRight span:after {
+                border-left: 8px solid #9EEA6A;
+                right: -16px;
+            }
+        </style>
+    </header>
+    <body>
+        <div class="triangle">
+            <p>仿微信聊天</p>
+            <ul>
+                <li class="textLeft"><span>吃了没？</span></li>
+                <li class="textRight"><span>嗯嗯，在吃呢，你呢。</span></li>
+            </ul>
+        </div>
+        <div id="id"></div>
+    </body>
+    <script>
+        var b = "asdfd<br/>fddf";
+        var a = document.getElementsByTagName("div")[1].textContent = b;
+        console.log(a);
+    </script>
+</html>

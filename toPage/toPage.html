@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>toPage</title>
+        <meta charset="utf-8">
+        <link href="./toPage.css"  type="text/css" rel="stylesheet" />
+        <script src="./jquery.min.js"></script>
+        <script src="./toPage.js"></script>
+        <script src="./jquery.pagination.js"></script>
+    </head>
+    <body>
+        <div id="toPage"></div>
+        <div id="toPage1"></div>
+        <script>
+            page_ctrl ({
+                obj_box: "#toPage",
+                total_item: 3,
+                per_num: 10,
+                current_page: 1,
+                change_content: function (pageSize, currentPage) {
+                    console.log(pageSize, currentPage);
+                }
+            });
+            $("#toPage1").pagination({
+                // 当前每页条目数
+                pageSize: 10,
+                // 配置每页条目数
+                pageSizes: [10],
+                totalItem: 0,
+                currentPage: 1,
+                changePage: function (pageSize, currentPage) {
+                    console.log(pageSize, currentPage);
+                }
+            });
+        </script>
+    </body>
+</html>

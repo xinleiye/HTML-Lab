@@ -1,0 +1,41 @@
+
+<html>
+    <head>
+        <title>Main</title>
+        <meta charset="utf=8">
+    </head>
+
+
+    <body>
+        <script>
+            let p = new Promise(function (resolve, reject) {
+                resolve("成功!");
+            });
+    
+    
+            p.then(function (successMessage) {
+                console.log("p! " + successMessage);
+            })
+        </script>
+        <script>
+            let p1 = new Promise(function (resolve, reject) {
+                resolve("成功!");
+            });
+    
+    
+            p1.then(function (successMessage) {
+                console.log("p1! " + successMessage);
+            })
+        </script>
+        <script>
+            let p2 = new Promise(function (resolve, reject) {
+                resolve("成功!");
+            });
+    
+    
+            p2.then(function (successMessage) {
+                console.log("p2! " + successMessage);
+            })
+        </script>
+    </body>
+</html>

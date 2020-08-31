@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Form</title>
+    </head>
+    <body>
+        <form method="get">
+            <p>username: <input type="text" name="username" /></p>
+            <p>password: <input type="text" name="password" /></p>
+            <input type="submit" value="Submit" />
+            <div id="radio">
+                <input type="radio" name="asdf" onclick="test(value)" value="1">one
+                <input type="radio" name="asdf" onclick="test(value)" value="2">two
+                <input type="radio" name="asdf" onclick="test(value)" value="3">three
+            </div>
+        </form>
+    </body>
+    <script>
+        function test (e) {
+            console.log(e);
+        }
+        let ele = document.querySelector("#radio");
+
+        for (let item of ele.children) {
+            if (item.value === "2") {
+                item.checked = true;
+            } else {
+                item.checked = false;
+            }
+        }
+    </script>
+</html>

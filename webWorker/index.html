@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+    <header>
+        <title>Flex</title>
+        <script src="https://cdn.bootcss.com/pdfmake/0.1.36/pdfmake.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/gh/youdao123/cqes-cdn@1.0/pdfmake/vfs_fonts.js"></script>
+        <script id="worker" type="app/worker">
+            console.log("webWorker");
+            var canvas, img;
+            addEventListener('message', function (e) {
+                console.log(e);
+                postMessage('some message');
+            }, false);
+        </script>
+        <script type="text/javascript">
+            console.log("main");
+            var blob = new Blob([document.querySelector('#worker').textContent]);
+            var url = window.URL.createObjectURL(blob);
+            var worker = new Worker(url);
+            var obj = { name: "aaa" };
+
+            window.obj = obj;
+
+            canvas = document.createElement("canvas");
+            ctx = canvas.getContext("2d");
+            img = new Image();
+            worker.postMessage({ pdfMak: obj});
+            worker.onmessage = function (e) {
+                // e.data === 'some message'
+                console.log(obj, e);
+            };
+        </script>
+        <script type="text/javascript">
+            let script;
+            let head = document.getElementsByTagName("head")[0];
+
+            script = document.createElement("script");
+            script.type = "text/javascript";
+            script.charset = "utf-8";
+            // script.onreadystatechange = function () {
+            //     if (this.readyState === "complete") {
+            //         script.onreadystatechange = null;
+            //         script.onload = null;
+            //         head.removeChild(this);
+            //     }
+            // };
+            script.onload = function () {
+                console.log("script loaded");
+                // script.onreadystatechange = null;
+                // script.onload = null;
+                // head.removeChild(this);
+            };
+            script.textContent = "console.log('helloword')";
+            // script.src = url;
+            head.appendChild(script);
+        </script>
+    </header>
+    <body>
+        <div class="div1">
+            <div class="div11">11</div>
+            <div class="div12">12</div>
+            <div class="div13">13</div>
+        </div>
+    </body>
+</html>
